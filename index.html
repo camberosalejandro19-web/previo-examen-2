@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi página con imágenes</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .contenedor {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px;
+        }
+
+        .contenedor img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border: 3px solid #333;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        iframe {
+            width: 80%;
+            height: 300px;
+            border: 2px solid #333;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Revelacion de Fraternidades</h1>
+
+    <p>Selecciona una opcion del menu para ver la informacion:</p>
+
+    <div class="contenedor">
+
+        <a href="#info1" onclick="mostrarInfo(1)">
+            <img src="img1.jpg" alt="Imagen 1">
+        </a>
+
+        <a href="#info2" onclick="mostrarInfo(2)">
+            <img src="img2.jpg" alt="Imagen 2">
+        </a>
+
+    </div>
+
+    <iframe id="marco" title="Información seleccionada"
+        srcdoc="<h2 style='text-align:center'>Selecciona una imagen</h2>
+        <p style='text-align:center'>Aquí aparecerá la información.</p>">
+    </iframe>
+
+    <script>
+        function mostrarInfo(numero) {
+            let contenido = "";
+
+            if (numero === 1) {
+                contenido = `
+                    <h2>Procedimientos para entrar a la revelacion</h2>
+                    <ol>
+                        <li>Tener el link</li>
+                        <li>Tener numero de control</li>
+                        <li>Revisar que coinsida tu nombre</li>
+                        <li>Revisar que se haya acabado el temporizador</li>
+                        <li>Compartir al final tu sobre de fraternidad</li>
+                    </ol>
+                `;
+            } else {
+                contenido = `
+                    <h2>Requisitos o problemas</h2>
+                    <ol>
+                        <li>Tener internet o datos</li>
+                        <li>En caso de no tener datos pidan que les pasen internet para poner los datos que les pide la pagina</li>
+                        <li>NO SE LES OCURRA REINICIAR LA PAGINA (porque mientras estes en el contador ya no ocupas el internet).</li>
+                    </ol>
+                `;
+            }
+
+            document.getElementById("marco").srcdoc = contenido;
+        }
+    </script>
+
+</body>
+</html>
